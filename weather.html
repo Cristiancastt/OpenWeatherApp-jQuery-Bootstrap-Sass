@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>OpenWeatherApp</title>
+    <link rel="icon" type="image/png" href="./resources/images/icono.png">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/stylesheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+</head>
+
+<body id="body" class="">
+    <video id="video" src="./resources/videos/tierra2.mp4" autoplay muted loop>
+    </video>
+    <div id="overlay" class="overlay"></div>
+
+
+    <nav class="nav justify-content-center">
+        <a id="home-link" class="nav-link" aria-current="home" href="#home">Home</a>
+        <a id="weather-link" class="nav-link" href="#weather">Weather</a>
+        <a class="nav-link  " data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></a>
+        <ul class="dropdown-menu">
+            <li><a id="dark" class="dropdown-item "><i class="fa-solid fa-sun"></i> Light Mode</a></li>
+            <li><a id="dark" class="dropdown-item ">🇪🇸 Español</a></li>
+        </ul>
+    </nav>
+
+    <div id="home" class="d-flex align-items-center justify-content-center   py-5 text-white">
+        <div class="container text-center">
+            <div class="hero p-5 rounded">
+                <h1 class="display-3 fw-bold">OpenWeatherApp</h1>
+                <p class="display-5  lead">Discover Your Local Weather</p>
+                <p class="my-4 lead">
+                    OpenWeatherApp is your go-to destination for up-to-date weather information. Whether you're planning your day or simply curious about the current weather conditions, our user-friendly platform provides you with accurate and reliable weather data for any
+                    location around the world.
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div id="weather" class="d-none">
+        <div class="container position-relative p-3">
+            <div class="position-absolute top-0 end-0 p-2">
+                <button id="location-button" class="btn btn-success">
+                    <i class="fa-solid fa-location-crosshairs"></i>
+                </button>
+            </div>
+        </div>
+        <div class="container text-center mb-0">
+            <div class="hero">
+                <h1 class="display-4 fw-bold">Weather</h1>
+                <p class="lead">Discover Your Actual Weather</p>
+            </div>
+        </div>
+
+
+
+        <div class="container h-100 p-5">
+            <div class="row h-100 justify-content-center align-items-center">
+                <div class="col-9 border-1 border-black">
+                    <div class="card text-center shadow-lg border-1 border-dark text-decoration-none">
+
+                        <div class="card-header">
+                            <div class="input-group p-3 ">
+                                <input id="input" type="text" class="shadow-sm form-control     border-2 border-success" placeholder="London" aria-label="" aria-describedby="button-addon2">
+                                <button id="btnBuscar" class="shadow-sm btn btn-success    border-2 border-success" type="button" id="button-addon2"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="container text-center">
+                                <div class="row m-0">
+                                    <div class="col">
+                                        <p id="city" class="fs-2 fw-bolder">City</p>
+                                        <p id="country" class="fs-5 fw-light">Country</p>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center justify-content-center m-0 p-0">
+                                    <div class="col">
+                                        <img id="weather-icon" class="img-fluid" src="./resources/images/drizzle.png">
+                                    </div>
+                                    <div class="col text-center">
+                                        <p id="temperature" class="fs-1 fw-bold">0ºC</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-3 mb-2">
+                            <div class="container text-center">
+                                <div class="row align-items-center justify-content-center">
+                                    <div class="col">
+                                        <div class="d-flex align-items-center justify-content-center">
+                                            <img class="p-2 img-fluid" width="50px" src="./resources/images/humidity.png">
+                                            <p id="humidity" class="p-2 mb-1 fs-5 fw-light">0%</p>
+                                            <p class="p-2 mb-1 fs-5 fw-light">Humidity</p>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="d-flex align-items-center justify-content-center">
+                                            <img class="p-2 img-fluid" width="50px" src="./resources/images/wind.png">
+                                            <p id="wind-speed" class="p-2 mb-1 fs-5 fw-light">0Km/h</p>
+                                            <p class="p-2 mb-1 fs-5 fw-light">Wind Speed</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="forecast" class="container">
+            <div class="container text-center mb-0">
+                <div class="hero">
+                    <h1 class="display-4 fw-bold">Forecast</h1>
+                    <p class="lead">Discover Your Future Weather</p>
+                </div>
+            </div>
+            <div class="row align-items-center justify-content-center p-5">
+                <div class="col-12 col-md-6 col-lg-3 text-center">
+                    <div class="card mb-3 shadow-lg border-1 border-black align-items-center justify-content-center m-0 p-3">
+                        <img id="weather1" class="p-2 img-fluid" width="150px" src="./resources/images/clear.png">
+                        <div class="card-body">
+                            <h5 id="date1" class="card-title display-4">Day 1</h5>
+                            <h5 id="temp1" class="card-body display-6">0ºC</h5>
+                            <p id="info1" class="card-text">Some weather information for Day 1.</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 text-center">
+                    <div class="card mb-3 shadow-lg border-1 border-black align-items-center justify-content-center m-0 p-3">
+                        <img id="weather2" class="p-2 img-fluid" width="150px" src="./resources/images/clear.png">
+                        <div class="card-body">
+                            <h5 id="date2" class="card-title display-4">Day 2</h5>
+                            <h5 id="temp2" class="card-body display-6">0ºC</h5>
+                            <p id="info2" class="card-text">Some weather information for Day 2.</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 text-center">
+                    <div class="card mb-3 shadow-lg border-1 border-black align-items-center justify-content-center m-0 p-3">
+                        <img id="weather3" class="p-2 img-fluid" width="150px" src="./resources/images/clear.png">
+                        <div class="card-body">
+                            <h5 id="date3" class="card-title display-4">Day 3</h5>
+                            <h5 id="temp3" class="card-body display-6">0ºC</h5>
+                            <p id="info3" class="card-text">Some weather information for Day 3.</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 text-center">
+                    <div class="card mb-3 shadow-lg border-1 border-black align-items-center justify-content-center m-0 p-3">
+                        <img id="weather4" class="p-2 img-fluid" width="150px" src="./resources/images/clear.png">
+                        <div class="card-body">
+                            <h5 id="date4" class="card-title display-4">Day 4</h5>
+                            <h5 id="temp4" class="card-body display-6">0ºC</h5>
+                            <p id="info4" class="card-text">Some weather information for Day 4.</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+    </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="./js/jquery.js"></script>
+    <script src="./js/bootstrap.bundle.js"></script>
+    <script src="./js/app.js"></script>
+</body>
+
+</html>
